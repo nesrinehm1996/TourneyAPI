@@ -14,7 +14,7 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-
+    public User get(User u){ return userRepository.findByEmail(u.getEmail()).get();}
 
     public void create(User u) {
         userRepository.save(u);
