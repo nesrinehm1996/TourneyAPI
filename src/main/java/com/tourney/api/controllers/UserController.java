@@ -37,8 +37,15 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserVM loginUser){
         User user = setUser(loginUser);
-        service.login(user);
-        return ResponseEntity.ok().body("User logged in");
+
+        boolean succes = service.login(user);
+        if(succes){
+            return ResponseEntity.ok().body("User logged in");
+        }
+        else {
+            user = null;
+            return ResponseEntity.badRequest().body("Failed");
+        }
     }
 
     private User setUser(UserVM user){

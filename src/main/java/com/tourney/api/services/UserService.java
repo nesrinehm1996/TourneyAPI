@@ -23,11 +23,12 @@ public class UserService {
     public boolean login(User u){
         boolean succes;
 
-        try{
-            //Check if this works
-            succes = userRepository.findByEmail(u.getEmail()).isPresent();
+        User dbUser = get(u);
+
+        if(u.getEmail() == dbUser.getEmail() && u.getPassword() == dbUser.getPassword()){
+            succes = true;
         }
-        catch (Exception ex){
+        else {
             succes = false;
         }
 
