@@ -20,9 +20,10 @@ public class UserController {
         return "Deze URL's zijn beschikbaar: /getUser , /addUser , /login , /createTournament";
     }
 
-    @RequestMapping("/getUser")
-    public ResponseEntity<User> getUser(){
-        User user = new User("twan@mail.com", "password");
+    @PostMapping("/getUser")
+    public ResponseEntity<User> getUser(@RequestBody UserVM getUser) {
+        User user = setUser(getUser);
+        service.get(user);
         return ResponseEntity.ok(user);
     }
 
@@ -36,8 +37,15 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserVM loginUser){
         User user = setUser(loginUser);
-        service.login(user);
-        return ResponseEntity.ok().body("User logged in");
+
+        boolean succes = service.login(user);
+        if(succes){
+            return ResponseEntity.ok().body("User logged in");
+        }
+        else {
+            user = null;
+            return ResponseEntity.badRequest().body("Failed");
+        }
     }
 
     private User setUser(UserVM user){
