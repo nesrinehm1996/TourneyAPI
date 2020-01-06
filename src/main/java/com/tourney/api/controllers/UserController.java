@@ -40,11 +40,11 @@ public class UserController {
 
         boolean succes = service.login(user);
         if(succes){
-            return ResponseEntity.ok().body("User logged in");
+            return ResponseEntity.ok().body(user);
         }
         else {
             user = null;
-            return ResponseEntity.badRequest().body("Failed");
+            return ResponseEntity.badRequest().body(user);
         }
     }
 

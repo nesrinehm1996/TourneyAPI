@@ -25,7 +25,7 @@ public class UserService {
 
         User dbUser = get(u);
 
-        if(u.getEmail() == dbUser.getEmail() && u.getPassword() == dbUser.getPassword()){
+        if(u.getEmail().equals(dbUser.getEmail()) && u.getPassword().equals(dbUser.getPassword())){
             succes = true;
         }
         else {
