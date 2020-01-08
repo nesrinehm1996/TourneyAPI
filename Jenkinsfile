@@ -1,8 +1,10 @@
 node{
   stage('SCM Checkout'){
+    
     git 'https://github.com/twanbeeren/TourneyAPI'
   }
   stage('Compile-package'){
-    sh 'mvn-package'
+    def mvnHome = tool name: 'M3', type: 'maven'
+    sh "${mvnHome}/bin/mvn package"
   }
 }
