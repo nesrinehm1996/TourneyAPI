@@ -31,7 +31,7 @@ import java.util.Optional;
 @AutoConfigureMockMvc
 @TestPropertySource(
         locations = "classpath:application-integrationtest.properties")
-public class UserControllerTests {
+public class UserControllerTest {
 
     @Autowired
     private MockMvc mvc;

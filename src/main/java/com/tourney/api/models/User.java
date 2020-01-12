@@ -18,8 +18,15 @@ public class User {
     private String firstName;
     private String lastName;
     private int age;
+    private String token;
 
+    public String getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public int getId() {
         return id;

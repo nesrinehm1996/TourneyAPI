@@ -22,9 +22,15 @@ public class TournamentController {
     public ResponseEntity createTournament(@RequestBody TournamentVM tournamentVM){
         Tournament tournament = setTournament(tournamentVM);
         service.create(tournament);
-        return ResponseEntity.ok().body("Tournament not yet added");
+        return ResponseEntity.ok().body("Tournament added");
     }
 
+    @PostMapping("/getTeams")
+    public ResponseEntity getTeams(@RequestBody TournamentVM tournamentVM){
+        Tournament tournament = setTournament(tournamentVM);
+//        service.getTeams(1);
+        return ResponseEntity.ok().body(tournament.getTeams());
+    }
 
 
 
@@ -35,10 +41,10 @@ public class TournamentController {
             entityTournament.setDate(tournament.getDate());
             entityTournament.setName(tournament.getName());
             // TODO: 06/01/2020  Get all Teams with method
-            List<Team> teams = service.getTeams(tournament.getId());
-            if(teams.size() > 0){
-                entityTournament.setTeams(teams);
-            }
+//            List<Team> teams = service.getTeams(tournament.getId());
+//            if(teams.size() > 0){
+//                entityTournament.setTeams(teams);
+//            }
 
         }
         catch(Exception ex){

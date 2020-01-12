@@ -6,6 +6,9 @@ public class UserVM {
     String firstName;
     String lastName;
     int age;
+    String token;
+
+
 
     public String getEmail() {
         return email;
@@ -25,5 +28,9 @@ public class UserVM {
 
     public int getAge() {
         return age;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

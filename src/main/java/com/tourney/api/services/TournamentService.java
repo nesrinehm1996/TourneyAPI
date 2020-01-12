@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -17,11 +18,14 @@ public class TournamentService {
 
     public void create(Tournament t){tournamentRepository.save(t);}
 
-    public List<Team> getTeams(int id) {
-        List<Team> result;
+    public List<Tournament> getTournaments() {
+        var it = tournamentRepository.findAll();
 
-        result = tournamentRepository.getAllById(id);
+        var tournaments = new ArrayList<Tournament>();
+        it.forEach(e -> tournaments.add(e));
 
-        return result;
+        return tournaments;
     }
+
+//    public List<Team>
 }
